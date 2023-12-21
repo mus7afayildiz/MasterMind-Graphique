@@ -134,6 +134,10 @@
             this.btnColor2 = new System.Windows.Forms.Button();
             this.btnColor1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblBien = new System.Windows.Forms.Label();
+            this.lblMal = new System.Windows.Forms.Label();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.pnlEssai = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -225,7 +229,6 @@
             this.btn90.TabIndex = 8;
             this.btn90.Text = "Couleur1";
             this.btn90.UseVisualStyleBackColor = true;
-            this.btn90.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn91
             // 
@@ -256,6 +259,8 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panel1.Controls.Add(this.pnlEssai);
             this.panel1.Controls.Add(this.rslt03);
             this.panel1.Controls.Add(this.rslt13);
             this.panel1.Controls.Add(this.rslt23);
@@ -349,7 +354,7 @@
             this.panel1.Controls.Add(this.btn82);
             this.panel1.Controls.Add(this.btn93);
             this.panel1.Controls.Add(this.btn92);
-            this.panel1.Location = new System.Drawing.Point(79, 56);
+            this.panel1.Location = new System.Drawing.Point(80, 56);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(627, 526);
             this.panel1.TabIndex = 15;
@@ -551,7 +556,6 @@
             this.rslt22.Size = new System.Drawing.Size(20, 20);
             this.rslt22.TabIndex = 17;
             this.rslt22.UseVisualStyleBackColor = true;
-            this.rslt22.Click += new System.EventHandler(this.button54_Click);
             // 
             // rslt32
             // 
@@ -780,7 +784,6 @@
             this.label1.Size = new System.Drawing.Size(13, 13);
             this.label1.TabIndex = 15;
             this.label1.Text = "9";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // lbl1
             // 
@@ -793,12 +796,13 @@
             // 
             // genererCouleur
             // 
+            this.genererCouleur.BackColor = System.Drawing.Color.LightSkyBlue;
             this.genererCouleur.Location = new System.Drawing.Point(16, 17);
             this.genererCouleur.Name = "genererCouleur";
             this.genererCouleur.Size = new System.Drawing.Size(99, 54);
             this.genererCouleur.TabIndex = 20;
             this.genererCouleur.Text = "Generer Couleurs";
-            this.genererCouleur.UseVisualStyleBackColor = true;
+            this.genererCouleur.UseVisualStyleBackColor = false;
             this.genererCouleur.Click += new System.EventHandler(this.genererCouleur_Click);
             // 
             // btn00
@@ -809,7 +813,6 @@
             this.btn00.TabIndex = 8;
             this.btn00.Text = "Couleur1";
             this.btn00.UseVisualStyleBackColor = true;
-            this.btn00.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn10
             // 
@@ -819,7 +822,6 @@
             this.btn10.TabIndex = 8;
             this.btn10.Text = "Couleur1";
             this.btn10.UseVisualStyleBackColor = true;
-            this.btn10.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn20
             // 
@@ -829,7 +831,6 @@
             this.btn20.TabIndex = 8;
             this.btn20.Text = "Couleur1";
             this.btn20.UseVisualStyleBackColor = true;
-            this.btn20.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn30
             // 
@@ -839,7 +840,6 @@
             this.btn30.TabIndex = 8;
             this.btn30.Text = "Couleur1";
             this.btn30.UseVisualStyleBackColor = true;
-            this.btn30.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn40
             // 
@@ -849,7 +849,6 @@
             this.btn40.TabIndex = 8;
             this.btn40.Text = "Couleur1";
             this.btn40.UseVisualStyleBackColor = true;
-            this.btn40.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn50
             // 
@@ -859,7 +858,6 @@
             this.btn50.TabIndex = 8;
             this.btn50.Text = "Couleur1";
             this.btn50.UseVisualStyleBackColor = true;
-            this.btn50.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn01
             // 
@@ -941,7 +939,6 @@
             this.btn60.TabIndex = 8;
             this.btn60.Text = "Couleur1";
             this.btn60.UseVisualStyleBackColor = true;
-            this.btn60.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn23
             // 
@@ -978,7 +975,6 @@
             this.btn70.TabIndex = 8;
             this.btn70.Text = "Couleur1";
             this.btn70.UseVisualStyleBackColor = true;
-            this.btn70.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn43
             // 
@@ -1033,7 +1029,6 @@
             this.btn80.TabIndex = 8;
             this.btn80.Text = "Couleur1";
             this.btn80.UseVisualStyleBackColor = true;
-            this.btn80.Click += new System.EventHandler(this.btn1_Click);
             // 
             // btn22
             // 
@@ -1181,21 +1176,62 @@
             this.panel2.Size = new System.Drawing.Size(318, 38);
             this.panel2.TabIndex = 16;
             // 
+            // lblBien
+            // 
+            this.lblBien.AutoSize = true;
+            this.lblBien.Location = new System.Drawing.Point(575, 21);
+            this.lblBien.Name = "lblBien";
+            this.lblBien.Size = new System.Drawing.Size(27, 13);
+            this.lblBien.TabIndex = 17;
+            this.lblBien.Text = "bien";
+            // 
+            // lblMal
+            // 
+            this.lblMal.AutoSize = true;
+            this.lblMal.Location = new System.Drawing.Point(604, 21);
+            this.lblMal.Name = "lblMal";
+            this.lblMal.Size = new System.Drawing.Size(23, 13);
+            this.lblMal.TabIndex = 18;
+            this.lblMal.Text = "mal";
+            // 
+            // btnReset
+            // 
+            this.btnReset.BackColor = System.Drawing.Color.IndianRed;
+            this.btnReset.Location = new System.Drawing.Point(96, 12);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(99, 38);
+            this.btnReset.TabIndex = 19;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = false;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
+            // pnlEssai
+            // 
+            this.pnlEssai.Location = new System.Drawing.Point(125, 377);
+            this.pnlEssai.Name = "pnlEssai";
+            this.pnlEssai.Size = new System.Drawing.Size(472, 160);
+            this.pnlEssai.TabIndex = 24;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(706, 605);
+            this.Controls.Add(this.btnReset);
+            this.Controls.Add(this.lblMal);
+            this.Controls.Add(this.lblBien);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1307,6 +1343,10 @@
         private System.Windows.Forms.Button btn83;
         private System.Windows.Forms.Button btn72;
         private System.Windows.Forms.Button btn82;
+        private System.Windows.Forms.Label lblBien;
+        private System.Windows.Forms.Label lblMal;
+        private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.Panel pnlEssai;
     }
 }
 

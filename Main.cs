@@ -1,4 +1,12 @@
-﻿using System;
+﻿
+///ETML
+///Auteur : Mustafa Yildiz
+///Date   : 27.10.2023
+///Description : Vous demandez à l’ordinateur de créer n’importe quel nombre de couleurs aléatoires sur 7 couleurs. 
+///Vous essayez de deviner leur ordre.
+
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,14 +20,20 @@ namespace MasterMind_Graphique
 {
     public partial class Main : Form
     {
+        const int NBR_TAILLE = 4;
         static Random random = new Random();
-        Color[] couleurs = { Color.Gray, Color.Yellow, Color.White, Color.Red, Color.Blue, Color.Magenta, Color.Cyan};
-       
 
+        int cmptr = 1;
+        int btnWidth = 75;
+        int btnHeight = 23;
+        int margin = 5;
+        int startLocationX = 35;
+        int startLocationY = 10;
 
-        Color[] couleursParOrdinateur = new Color[4];
-        Color[] couleursParUtilisateur = new Color[4];   
+        Color[] couleursParOrdinateur = new Color[NBR_TAILLE];
+        Color[] couleursParUtilisateur = new Color[NBR_TAILLE];
 
+        Button[,] b;
         Button[] buttons;
         Button[] buttonsUtilisateur;
         Button[] buttonsBase;
@@ -35,9 +49,11 @@ namespace MasterMind_Graphique
         {
             InitializeComponent();
 
+            b = new Button[1, 5];
+
+            buttonsTableau = new Button[10, 4];
             /*
-            Button[,] buttonsTableau =
-       {
+            {
             {btn00, btn01, btn02, btn03 },
             {btn10, btn11, btn12, btn13 },
             {btn20, btn21, btn22, btn23 },
@@ -48,110 +64,30 @@ namespace MasterMind_Graphique
             {btn70, btn71, btn72, btn73 },
             {btn80, btn81, btn82, btn83 },
             {btn90, btn91, btn92, btn93 },
+            };     */
 
-        };
-            */
-            buttonsTableau = new Button[10,4];
-            buttonsTableau[0,0] = btn00;
-            buttonsTableau[0,1] = btn01;
-            buttonsTableau[0,2] = btn02;
-            buttonsTableau[0,3] = btn03;
-            buttonsTableau[1,0] = btn10;
-            buttonsTableau[1,1] = btn11;
-            buttonsTableau[1,2] = btn12;
-            buttonsTableau[1,3] = btn13;
-            buttonsTableau[2,0] = btn20;
-            buttonsTableau[2,1] = btn21;
-            buttonsTableau[2,2] = btn22;
-            buttonsTableau[2,3] = btn23;
-            buttonsTableau[3,0] = btn30;
-            buttonsTableau[3,1] = btn31;
-            buttonsTableau[3,2] = btn32;
-            buttonsTableau[3,3] = btn33;
-            buttonsTableau[4,0] = btn40;
-            buttonsTableau[4,1] = btn41;
-            buttonsTableau[4,2] = btn42;
-            buttonsTableau[4,3] = btn43;
-            buttonsTableau[5,0] = btn50;
-            buttonsTableau[5,1] = btn51;
-            buttonsTableau[5,2] = btn52;
-            buttonsTableau[5,3] = btn53;
-            buttonsTableau[6,0] = btn60;
-            buttonsTableau[6,1] = btn61;
-            buttonsTableau[6,2] = btn62;
-            buttonsTableau[6,3] = btn63;
-            buttonsTableau[7,0] = btn70;
-            buttonsTableau[7,1] = btn71;
-            buttonsTableau[7,2] = btn72;
-            buttonsTableau[7,3] = btn73;
-            buttonsTableau[8,0] = btn80;
-            buttonsTableau[8,1] = btn81;
-            buttonsTableau[8,2] = btn82;
-            buttonsTableau[8,3] = btn83;
-            buttonsTableau[9,0] = btn90;
-            buttonsTableau[9,1] = btn91;
-            buttonsTableau[9,2] = btn92;
-            buttonsTableau[9,3] = btn93;
-
-            buttonsTableauResult = new Button[10, 4];
-            buttonsTableauResult[0, 0] = rslt00;
-            buttonsTableauResult[0, 1] = rslt01;
-            buttonsTableauResult[0, 2] = rslt02;
-            buttonsTableauResult[0, 3] = rslt03;
-            buttonsTableauResult[1, 0] = rslt10;
-            buttonsTableauResult[1, 1] = rslt11;
-            buttonsTableauResult[1, 2] = rslt12;
-            buttonsTableauResult[1, 3] = rslt13;
-            buttonsTableauResult[2, 0] = rslt20;
-            buttonsTableauResult[2, 1] = rslt21;
-            buttonsTableauResult[2, 2] = rslt22;
-            buttonsTableauResult[2, 3] = rslt23;
-            buttonsTableauResult[3, 0] = rslt30;
-            buttonsTableauResult[3, 1] = rslt31;
-            buttonsTableauResult[3, 2] = rslt32;
-            buttonsTableauResult[3, 3] = rslt33;
-            buttonsTableauResult[4, 0] = rslt40;
-            buttonsTableauResult[4, 1] = rslt41;
-            buttonsTableauResult[4, 2] = rslt42;
-            buttonsTableauResult[4, 3] = rslt43;
-            buttonsTableauResult[5, 0] = rslt50;
-            buttonsTableauResult[5, 1] = rslt51;
-            buttonsTableauResult[5, 2] = rslt52;
-            buttonsTableauResult[5, 3] = rslt53;
-            buttonsTableauResult[6, 0] = rslt60;
-            buttonsTableauResult[6, 1] = rslt61;
-            buttonsTableauResult[6, 2] = rslt62;
-            buttonsTableauResult[6, 3] = rslt63;
-            buttonsTableauResult[7, 0] = rslt70;
-            buttonsTableauResult[7, 1] = rslt71;
-            buttonsTableauResult[7, 2] = rslt72;
-            buttonsTableauResult[7, 3] = rslt73;
-            buttonsTableauResult[8, 0] = rslt80;
-            buttonsTableauResult[8, 1] = rslt81;
-            buttonsTableauResult[8, 2] = rslt82;
-            buttonsTableauResult[8, 3] = rslt83;
-            buttonsTableauResult[9, 0] = rslt90;
-            buttonsTableauResult[9, 1] = rslt91;
-            buttonsTableauResult[9, 2] = rslt92;
-            buttonsTableauResult[9, 3] = rslt93;
-
+            buttonsTableauResult = new Button[,]
+            {
+            {rslt00, rslt01, rslt02, rslt03 },
+            {rslt10, rslt11, rslt12, rslt13 },
+            {rslt20, rslt21, rslt22, rslt23 },
+            {rslt30, rslt31, rslt32, rslt33 },
+            {rslt40, rslt41, rslt42, rslt43 },
+            {rslt50, rslt51, rslt52, rslt53 },
+            {rslt60, rslt61, rslt62, rslt63 },
+            {rslt70, rslt71, rslt72, rslt73 },
+            {rslt80, rslt81, rslt82, rslt83 },
+            {rslt90, rslt91, rslt92, rslt93 },
+            };
 
             // Tableau des boutons colorés générés par l'ordinateur.
-            buttons = new Button[4];
-            buttons[0] = btnColor1;
-            buttons[1] = btnColor2;
-            buttons[2] = btnColor3; 
-            buttons[3] = btnColor4;
+            buttons = new Button[] { btnColor1, btnColor2, btnColor3, btnColor4 };          
 
             // Tableau des boutons créés par l'utilisateur.
+            buttonsUtilisateur = new Button[4] { btn90, btn91, btn92, btn93 };
             
-            buttonsUtilisateur = new Button[4];
-            buttonsUtilisateur[0] = btn90;
-            buttonsUtilisateur[1] = btn91;
-            buttonsUtilisateur[2] = btn92;
-            buttonsUtilisateur[3] = btn93;
               
-
+            
             // Tableau composé de boutons de couleurs sélectionnables.
             buttonsBase = new Button[7];
             buttonsBase[0] = btnGray;
@@ -163,16 +99,11 @@ namespace MasterMind_Graphique
             buttonsBase[6] = btnCyan;
 
             // Un tableau composé de boutons qui montre à l'utilisateur le résultat de la comparaison.
-            buttonsResult = new Button[4];
+            buttonsResult = new Button[NBR_TAILLE];
             buttonsResult[0] = rslt92;
             buttonsResult[1] = rslt90;
             buttonsResult[2] = rslt91;
             buttonsResult[3] = rslt93;   
-        }
-
-        private void btnCyan_Click(object sender, EventArgs e)
-        {
-            
         }
 
         /// <summary>
@@ -182,22 +113,19 @@ namespace MasterMind_Graphique
         /// <param name="e"></param>
         private void genererCouleur_Click(object sender, EventArgs e)
         {    
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < NBR_TAILLE; i++)
             {
                 int index = random.Next(buttonsBase.Length);
                 buttonsBase[i] = buttonsBase[index];
                 buttons[i].BackColor = buttonsBase[i].BackColor;
                 couleursParOrdinateur[i] = buttons[i].BackColor;
-            }  
+                genererCouleur.Enabled = false;
+            }
+            createElements();
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-        }
-
-        private void btn1_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -210,11 +138,14 @@ namespace MasterMind_Graphique
             CompareMemeIndex();
             CompareDifferentIndex();
             MontreResultat();
+            createElements();
+            lblBien.Text = Convert.ToString(compteurBienPlace);
+            lblMal.Text = Convert.ToString(compteurMalPlace);
             compteurCompare++;
             compteurColor = 0;
             compteurBienPlace = 0;
             compteurMalPlace = 0;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < NBR_TAILLE; i++)
             {
                 couleursParOrdinateur[i] = buttons[i].BackColor;
             }
@@ -228,23 +159,22 @@ namespace MasterMind_Graphique
         private void choisirCouleur(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            if (compteurColor < 4)
+            if (compteurColor < NBR_TAILLE)
             {
-                buttonsTableau[compteurCompare, compteurColor].BackColor = clickedButton.BackColor;
+                buttonsTableau[compteurColor, compteurCompare].BackColor = clickedButton.BackColor;
                 couleursParUtilisateur[compteurColor] = clickedButton.BackColor;
+                //b[compteurCompare, compteurColor].BackColor = clickedButton.BackColor;
                 compteurColor++;
             }
             else
             {
-                MessageBox.Show("Fazla girdin degerlendir i tikla");
-            }
-                
-
-            //buttonsUtilisateur[compteurColor].BackColor = clickedButton.BackColor;
-            
+                MessageBox.Show("Vous avez saisir trop");
+            }  
         }
 
-        //Les couleurs de l'ordinateur et de l'utilisateur sont comparées par même index.
+        /// <summary>
+        ///Les couleurs de l'ordinateur et de l'utilisateur sont comparées par même index.
+        /// </summary>
         void CompareMemeIndex()
         {
             for (int i = 0; i < couleursParOrdinateur.Length; i++)
@@ -259,6 +189,9 @@ namespace MasterMind_Graphique
         }
 
         //Les couleurs de l'ordinateur et de l'utilisateur sont comparées par different index.
+        /// <summary>
+        ///Les couleurs de l'ordinateur et de l'utilisateur sont comparées par different index.
+        /// </summary>
         void CompareDifferentIndex()
         {
             for (int i = 0; i < couleursParOrdinateur.Length; i++)
@@ -276,32 +209,114 @@ namespace MasterMind_Graphique
             }
         }
 
-        //Après évaluation, le résultat est affiché sur la console.
+
+        /// <summary>
+        ///Après évaluation, le résultat est affiché sur la console.
+        /// </summary>
         void MontreResultat()
         {
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= NBR_TAILLE; i++)
             {                           
-                if (compteurBienPlace >=
-                    i)
+                if (compteurBienPlace != 0)
                 {
-                    buttonsTableauResult[compteurCompare, i].BackColor = Color.Green;
-                    buttonsTableauResult[compteurCompare, i].Text = Convert.ToString(compteurBienPlace);
-                } else if (compteurMalPlace > i)
+                    for (int j = 0; j < compteurBienPlace; j++)
+                    {
+                        buttonsTableauResult[compteurCompare, j].BackColor = Color.Green;
+                    }                
+                }
+                if (compteurMalPlace != 0)
                 {
-                    buttonsTableauResult[compteurCompare, 4-i].BackColor = Color.Yellow;
-                    buttonsTableauResult[compteurCompare, 4-i].Text = Convert.ToString(compteurMalPlace);
+                    for (int k = compteurMalPlace; k > 0; k--)
+                    {
+                        buttonsTableauResult[NBR_TAILLE - k, cmptr].BackColor = Color.Yellow; 
+                    }
+                                     
                 }                  
+            }
+            if (compteurBienPlace == couleursParOrdinateur.Length) 
+            {
+                MessageBox.Show( $"Vous avez gagné :) Vous avez trouvé nombre d'essai {compteurCompare+1}" );
+                Reset();
+
+            }
+            if (compteurCompare == 10 & compteurBienPlace != couleursParOrdinateur.Length )
+            {
+                MessageBox.Show( $"Vous avez perdu Vous avez essai {compteurCompare} fois" );
+                Reset();
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Réinitialise les couleurs des boutons et des compteurs
+        /// </summary>
+        void Reset()
         {
-
+            for (int i = 0; i < NBR_TAILLE; i++)
+            {
+                for (int j = 0; j < NBR_TAILLE; j++)
+                {
+                    buttonsTableau[i, j].BackColor = Color.FromArgb(224, 224, 224);
+                    buttonsTableauResult[i, j].BackColor = Color.FromArgb(224, 224, 224);
+                    buttons[i].BackColor = Color.FromArgb(224, 224, 224);
+                    lblBien.Text = "";
+                    lblMal.Text = "";
+                    compteurCompare = 0;
+                    genererCouleur.Enabled = true;
+                }
+            }
         }
 
-        private void button54_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Il permet la réinitialisation en appelant la fonction reset.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReset_Click(object sender, EventArgs e)
         {
-
+            Reset();
         }
+
+        /// <summary>
+        /// il permet le creation des boutons pour choisir couleurs et montrer le resultat
+        /// </summary>
+        void createElements()
+        {
+            
+            Label label = new Label();
+            label.Location = new Point(startLocationX-20, startLocationY);
+            label.Name = "nbrEssai";
+            label.Text = Convert.ToString(cmptr);
+            label.Size = new Size(20, 20);
+            pnlEssai.Controls.Add(label);
+
+           
+            for (int i = 0; i < NBR_TAILLE; i++)
+            { 
+                Button newBtnEssai = new Button();
+                newBtnEssai.Size = new Size(pnlEssai.Width/(NBR_TAILLE*2), btnHeight);
+                newBtnEssai.Location = new Point(startLocationX + (btnWidth * i), startLocationY);
+                newBtnEssai.Name = "btn" + i + 1;
+                newBtnEssai.Text = "Couleur" + Convert.ToString(i+1);             
+                pnlEssai.Controls.Add(newBtnEssai);
+
+                buttonsTableau[i ,cmptr - 1] = newBtnEssai;
+            }
+            
+
+            for (int i = 0; i < NBR_TAILLE; i++)
+            {  
+                Button newBtnResultat = new Button();
+                newBtnResultat.Location = new Point(350 +(i*20), startLocationY);
+                newBtnResultat.Name = "btnResult" + i + 1;              
+                newBtnResultat.Size = new Size(20, 20);
+                pnlEssai.Controls.Add(newBtnResultat); 
+
+                buttonsTableauResult[i , cmptr - 1] = newBtnResultat;
+            }
+            startLocationY += 40;
+            cmptr++;
+        }
+
+
     }
 }
