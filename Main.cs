@@ -1,10 +1,9 @@
 ﻿
 ///ETML
 ///Auteur : Mustafa Yildiz
-///Date   : 27.10.2023
+///Date   : jeudi, 23 novembre 2023
 ///Description : Vous demandez à l’ordinateur de créer n’importe quel nombre de couleurs aléatoires sur 7 couleurs. 
 ///Vous essayez de deviner leur ordre.
-
 
 using System;
 using System.Collections.Generic;
@@ -25,19 +24,15 @@ namespace MasterMind_Graphique
 
         int cmptr = 1;
         int btnWidth = 75;
-        int btnHeight = 23;
-        int margin = 5;
-        int startLocationX = 35;
+        int btnHeight = 23;      
+        int startLocationX = 40;
         int startLocationY = 10;
 
         Color[] couleursParOrdinateur = new Color[NBR_TAILLE];
         Color[] couleursParUtilisateur = new Color[NBR_TAILLE];
-
-        Button[,] b;
+        
         Button[] buttons;
-        Button[] buttonsUtilisateur;
         Button[] buttonsBase;
-        Button[] buttonsResult;
         Button[,] buttonsTableau;
         Button[,] buttonsTableauResult;
 
@@ -49,46 +44,16 @@ namespace MasterMind_Graphique
         {
             InitializeComponent();
 
-            b = new Button[1, 5];
+        // Un tableau de boutons qui montrent à l'utilisateur les couleurs qu'il a sélectionnées.
+            buttonsTableau = new Button[10, NBR_TAILLE];
 
-            buttonsTableau = new Button[10, 4];
-            /*
-            {
-            {btn00, btn01, btn02, btn03 },
-            {btn10, btn11, btn12, btn13 },
-            {btn20, btn21, btn22, btn23 },
-            {btn30, btn31, btn32, btn33 },
-            {btn40, btn41, btn42, btn43 },
-            {btn50, btn51, btn52, btn53 },
-            {btn60, btn61, btn62, btn63 },
-            {btn70, btn71, btn72, btn73 },
-            {btn80, btn81, btn82, btn83 },
-            {btn90, btn91, btn92, btn93 },
-            };     */
+        // Un tableau composé de boutons qui montre à l'utilisateur le résultat de la comparaison.
+            buttonsTableauResult = new Button[10, NBR_TAILLE];        
 
-            buttonsTableauResult = new Button[,]
-            {
-            {rslt00, rslt01, rslt02, rslt03 },
-            {rslt10, rslt11, rslt12, rslt13 },
-            {rslt20, rslt21, rslt22, rslt23 },
-            {rslt30, rslt31, rslt32, rslt33 },
-            {rslt40, rslt41, rslt42, rslt43 },
-            {rslt50, rslt51, rslt52, rslt53 },
-            {rslt60, rslt61, rslt62, rslt63 },
-            {rslt70, rslt71, rslt72, rslt73 },
-            {rslt80, rslt81, rslt82, rslt83 },
-            {rslt90, rslt91, rslt92, rslt93 },
-            };
-
-            // Tableau des boutons colorés générés par l'ordinateur.
+        // Tableau des boutons colorés générés par l'ordinateur.
             buttons = new Button[] { btnColor1, btnColor2, btnColor3, btnColor4 };          
 
-            // Tableau des boutons créés par l'utilisateur.
-            buttonsUtilisateur = new Button[4] { btn90, btn91, btn92, btn93 };
-            
-              
-            
-            // Tableau composé de boutons de couleurs sélectionnables.
+        // Tableau composé de boutons de couleurs sélectionnables.
             buttonsBase = new Button[7];
             buttonsBase[0] = btnGray;
             buttonsBase[1] = btnYellow;
@@ -96,14 +61,7 @@ namespace MasterMind_Graphique
             buttonsBase[3] = btnRed;
             buttonsBase[4] = btnBlue;
             buttonsBase[5] = btnMagenta;
-            buttonsBase[6] = btnCyan;
-
-            // Un tableau composé de boutons qui montre à l'utilisateur le résultat de la comparaison.
-            buttonsResult = new Button[NBR_TAILLE];
-            buttonsResult[0] = rslt92;
-            buttonsResult[1] = rslt90;
-            buttonsResult[2] = rslt91;
-            buttonsResult[3] = rslt93;   
+            buttonsBase[6] = btnCyan;             
         }
 
         /// <summary>
@@ -145,6 +103,7 @@ namespace MasterMind_Graphique
             compteurColor = 0;
             compteurBienPlace = 0;
             compteurMalPlace = 0;
+
             for (int i = 0; i < NBR_TAILLE; i++)
             {
                 couleursParOrdinateur[i] = buttons[i].BackColor;
@@ -161,9 +120,8 @@ namespace MasterMind_Graphique
             Button clickedButton = (Button)sender;
             if (compteurColor < NBR_TAILLE)
             {
-                buttonsTableau[compteurColor, compteurCompare].BackColor = clickedButton.BackColor;
-                couleursParUtilisateur[compteurColor] = clickedButton.BackColor;
-                //b[compteurCompare, compteurColor].BackColor = clickedButton.BackColor;
+                buttonsTableau[compteurCompare, compteurColor].BackColor = clickedButton.BackColor;
+                couleursParUtilisateur[compteurColor] = clickedButton.BackColor;             
                 compteurColor++;
             }
             else
@@ -209,7 +167,6 @@ namespace MasterMind_Graphique
             }
         }
 
-
         /// <summary>
         ///Après évaluation, le résultat est affiché sur la console.
         /// </summary>
@@ -226,9 +183,9 @@ namespace MasterMind_Graphique
                 }
                 if (compteurMalPlace != 0)
                 {
-                    for (int k = compteurMalPlace; k > 0; k--)
+                    for (int k = 0; k < compteurMalPlace; k++)
                     {
-                        buttonsTableauResult[NBR_TAILLE - k, cmptr].BackColor = Color.Yellow; 
+                        buttonsTableauResult[compteurCompare, NBR_TAILLE - 1 - k].BackColor = Color.Yellow; 
                     }
                                      
                 }                  
@@ -251,19 +208,23 @@ namespace MasterMind_Graphique
         /// </summary>
         void Reset()
         {
-            for (int i = 0; i < NBR_TAILLE; i++)
+            for (int i = 0; i < compteurCompare; i++)
             {
                 for (int j = 0; j < NBR_TAILLE; j++)
-                {
+                {                  
                     buttonsTableau[i, j].BackColor = Color.FromArgb(224, 224, 224);
                     buttonsTableauResult[i, j].BackColor = Color.FromArgb(224, 224, 224);
-                    buttons[i].BackColor = Color.FromArgb(224, 224, 224);
-                    lblBien.Text = "";
-                    lblMal.Text = "";
-                    compteurCompare = 0;
-                    genererCouleur.Enabled = true;
+                    buttons[j].BackColor = Color.FromArgb(224, 224, 224);                     
                 }
             }
+            genererCouleur.Enabled = true;
+            lblBien.Text = "";
+            lblMal.Text = "";
+            compteurCompare = 0;
+            cmptr = 1;
+            startLocationX = 40;
+            startLocationY = 10;
+            pnlEssai.Controls.Clear();
         }
 
         /// <summary>
@@ -288,21 +249,18 @@ namespace MasterMind_Graphique
             label.Text = Convert.ToString(cmptr);
             label.Size = new Size(20, 20);
             pnlEssai.Controls.Add(label);
-
-           
+        
             for (int i = 0; i < NBR_TAILLE; i++)
             { 
                 Button newBtnEssai = new Button();
                 newBtnEssai.Size = new Size(pnlEssai.Width/(NBR_TAILLE*2), btnHeight);
                 newBtnEssai.Location = new Point(startLocationX + (btnWidth * i), startLocationY);
-                newBtnEssai.Name = "btn" + i + 1;
-                newBtnEssai.Text = "Couleur" + Convert.ToString(i+1);             
+                newBtnEssai.Name = "btn" + i + 1;       
                 pnlEssai.Controls.Add(newBtnEssai);
 
-                buttonsTableau[i ,cmptr - 1] = newBtnEssai;
+                buttonsTableau[cmptr - 1, i] = newBtnEssai;
             }
-            
-
+  
             for (int i = 0; i < NBR_TAILLE; i++)
             {  
                 Button newBtnResultat = new Button();
@@ -311,7 +269,7 @@ namespace MasterMind_Graphique
                 newBtnResultat.Size = new Size(20, 20);
                 pnlEssai.Controls.Add(newBtnResultat); 
 
-                buttonsTableauResult[i , cmptr - 1] = newBtnResultat;
+                buttonsTableauResult[cmptr - 1, i] = newBtnResultat;
             }
             startLocationY += 40;
             cmptr++;
