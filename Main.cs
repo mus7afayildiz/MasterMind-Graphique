@@ -19,9 +19,10 @@ namespace MasterMind_Graphique
 {
     public partial class Main : Form
     {
-        int taille = 0;
-        // taille de couleurs
-        const int NBR_TAILLE = 4;
+        /// <summary>
+        /// Taille de couleurs
+        /// </summary>
+        static int nbrTaille = 4;
 
         Random random = new Random();
         
@@ -29,47 +30,53 @@ namespace MasterMind_Graphique
         int startLocationX = 40;
         int startLocationY = 10;
 
-        // Pour comparer les couleurs et changer le couleurs dans même et different index
-        Color[] couleursParOrdinateur = new Color[NBR_TAILLE];
-        Color[] couleursParUtilisateur = new Color[NBR_TAILLE];
+        /// <summary>
+        /// Pour comparer les couleurs et changer le couleurs dans même et different index
+        /// </summary>
+        Color[] couleursParOrdinateur = new Color[nbrTaille];
+        Color[] couleursParUtilisateur = new Color[nbrTaille];
 
-        // Ce tableau concerne les couleurs que l'ordinateur attribuera au hasard.
+        /// Ce tableau concerne les couleurs que l'ordinateur attribuera au hasard.
         Button[] buttons;
 
-        // Ce tableau est pour les couleurs possibles
+        /// <summary>
+        /// Ce tableau est pour les couleurs possibles
+        /// </summary>
         Button[] buttonsBase;
 
-        // Pour mettre les couleurs sélectionnées et placer chaque sélection.
+        /// Pour mettre les couleurs sélectionnées et placer chaque sélection.
         Button[,] buttonsTableau;
 
-        // Ce tableau doit montrer les résultats sélectionnés.
+        /// <summary>
+        /// Ce tableau doit montrer les résultats sélectionnés.
+        /// </summary>
         Button[,] buttonsTableauResult;
 
         int compteurBienPlace = 0;
         int compteurMalPlace = 0;
 
-        // Pour contrôler les nombres de créer de boutons
+        /// Pour contrôler les nombres de créer de boutons
         int cmptr = 1;
 
-        // Pour contrôler les nombres de couleurs de choisir
+        /// Pour contrôler les nombres de couleurs de choisir
         int compteurColor = 0;
 
-        // Pour contrôler l'essais
+        /// Pour contrôler l'essais
         int compteurCompare = 0;
         public Main()
         {
             InitializeComponent();
 
-        // Un tableau de boutons qui montrent à l'utilisateur les couleurs qu'il a sélectionnées.
-            buttonsTableau = new Button[10, NBR_TAILLE];
+        /// Un tableau de boutons qui montrent à l'utilisateur les couleurs qu'il a sélectionnées.
+            buttonsTableau = new Button[10, nbrTaille];
 
-        // Un tableau composé de boutons qui montre à l'utilisateur le résultat de la comparaison.
-            buttonsTableauResult = new Button[10, NBR_TAILLE];        
+        /// Un tableau composé de boutons qui montre à l'utilisateur le résultat de la comparaison.
+            buttonsTableauResult = new Button[10, nbrTaille];        
 
-        // Tableau des boutons colorés générés par l'ordinateur.
-            buttons = new Button[NBR_TAILLE];          
+        /// Tableau des boutons colorés générés par l'ordinateur.
+            buttons = new Button[nbrTaille];          
 
-        // Tableau composé de boutons de couleurs sélectionnables.
+        /// Tableau composé de boutons de couleurs sélectionnables.
             buttonsBase = new Button[7];
             buttonsBase[0] = btnGray;
             buttonsBase[1] = btnYellow;
@@ -88,22 +95,23 @@ namespace MasterMind_Graphique
         private void GenererCouleur_Click(object sender, EventArgs e)
         {   
             GenererCoulerus();
-
+            /// Generer coulurs unique
             if (checkBox.Checked == true)
             {
-                int[] randomList = new int[NBR_TAILLE];
+                int[] randomList = new int[nbrTaille];
                 int randomNumber = 0;
 
-                for (int i = 0; i < NBR_TAILLE; i++)
+                for (int i = 0; i < nbrTaille;)
                 {
-                    randomNumber = random.Next(0, 7);
+                    randomNumber = random.Next(0, 7); 
                     if (!randomList.Contains(randomNumber))
                     {
                         randomList[i] = randomNumber;
+                        i++;
                     }
                 }
 
-                for (int i = 0; i < NBR_TAILLE; i++)
+                for (int i = 0; i < nbrTaille; i++)
                 {
                     buttons[i].BackColor = buttonsBase[randomList[i]].BackColor;
                     couleursParOrdinateur[i] = buttons[i].BackColor;
@@ -113,7 +121,8 @@ namespace MasterMind_Graphique
             }
             else
             {
-                for (int i = 0; i < NBR_TAILLE; i++)
+                /// Mettre les couleurs sur les boutons dans le tableau
+                for (int i = 0; i < nbrTaille; i++)
                 {
                     int index = random.Next(buttonsBase.Length);
                     buttonsBase[i] = buttonsBase[index];
@@ -127,10 +136,15 @@ namespace MasterMind_Graphique
         }
 
         void GenererCoulerus() {
-            for (int i = 0; i < NBR_TAILLE; i++)
+
+            /// Cacher le panneau
+            pnlOrdinateur.Visible = false;
+
+            /// Créer les boutons dynamiquement dans le panneau
+            for (int i = 0; i < nbrTaille; i++)
             {
                 Button genererButtons = new Button();
-                genererButtons.Size = new Size(pnlOrdinateur.Width/(NBR_TAILLE*2), btnHeight);
+                genererButtons.Size = new Size(pnlOrdinateur.Width/(nbrTaille*2), btnHeight);
                 genererButtons.Location = new Point(startLocationX + (genererButtons.Width * i), startLocationY);
                 genererButtons.Name = "btnColor" + i;           
                 buttons[i] = genererButtons;
@@ -160,7 +174,7 @@ namespace MasterMind_Graphique
             compteurBienPlace = 0;
             compteurMalPlace = 0;
 
-            for (int i = 0; i < NBR_TAILLE; i++)
+            for (int i = 0; i < nbrTaille; i++)
             {
                 couleursParOrdinateur[i] = buttons[i].BackColor;
             }
@@ -174,7 +188,7 @@ namespace MasterMind_Graphique
         private void choisirCouleur(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            if (compteurColor < NBR_TAILLE)
+            if (compteurColor < nbrTaille)
             {
                 buttonsTableau[compteurCompare, compteurColor].BackColor = clickedButton.BackColor;
                 couleursParUtilisateur[compteurColor] = clickedButton.BackColor;             
@@ -187,7 +201,7 @@ namespace MasterMind_Graphique
         }
 
         /// <summary>
-        ///Les couleurs de l'ordinateur et de l'utilisateur sont comparées par même index.
+        /// Les couleurs de l'ordinateur et de l'utilisateur sont comparées par même index.
         /// </summary>
         void CompareMemeIndex()
         {
@@ -202,9 +216,9 @@ namespace MasterMind_Graphique
             }
         }
 
-        //Les couleurs de l'ordinateur et de l'utilisateur sont comparées par different index.
+        /// Les couleurs de l'ordinateur et de l'utilisateur sont comparées par different index.
         /// <summary>
-        ///Les couleurs de l'ordinateur et de l'utilisateur sont comparées par different index.
+        /// Les couleurs de l'ordinateur et de l'utilisateur sont comparées par different index.
         /// </summary>
         void CompareDifferentIndex()
         {
@@ -224,11 +238,11 @@ namespace MasterMind_Graphique
         }
 
         /// <summary>
-        ///Après évaluation, le résultat est affiché sur la console.
+        /// Après évaluation, le résultat est affiché sur la console.
         /// </summary>
         void MontreResultat()
         {
-            for (int i = 0; i <= NBR_TAILLE; i++)
+            for (int i = 0; i <= nbrTaille; i++)
             {                           
                 if (compteurBienPlace != 0)
                 {
@@ -241,9 +255,8 @@ namespace MasterMind_Graphique
                 {
                     for (int k = 0; k < compteurMalPlace; k++)
                     {
-                        buttonsTableauResult[compteurCompare, NBR_TAILLE - 1 - k].BackColor = Color.Black; 
-                    }
-                                     
+                        buttonsTableauResult[compteurCompare, nbrTaille - 1 - k].BackColor = Color.Black; 
+                    }                    
                 }                  
             }
             if (compteurBienPlace == couleursParOrdinateur.Length) 
@@ -251,12 +264,11 @@ namespace MasterMind_Graphique
                 pnlOrdinateur.Visible = true;
                 MessageBox.Show( $"Vous avez gagné :) Vous avez trouvé nombre d'essai {compteurCompare+1}" );
                 Reset();
-
             }
             if (cmptr == 11 & compteurBienPlace != couleursParOrdinateur.Length )
             {
                 pnlOrdinateur.Visible = true;
-                MessageBox.Show( $"Vous avez perdu Vous avez essai {compteurCompare+1} fois" );
+                MessageBox.Show( $"Vous avez perdu :( Vous avez essai {compteurCompare+1} fois" );
                 Reset();
             }
         }
@@ -268,7 +280,7 @@ namespace MasterMind_Graphique
         {
             for (int i = 0; i < compteurCompare; i++)
             {
-                for (int j = 0; j < NBR_TAILLE; j++)
+                for (int j = 0; j < nbrTaille; j++)
                 {                  
                     buttonsTableau[i, j].BackColor = Color.FromArgb(224, 224, 224);
                     buttonsTableauResult[i, j].BackColor = Color.FromArgb(224, 224, 224);
@@ -301,8 +313,7 @@ namespace MasterMind_Graphique
         /// il permet le creation des boutons pour choisir couleurs et montrer le resultat
         /// </summary>
         void CreateElements()
-        {
-            
+        {   
             Label label = new Label();
             label.Location = new Point(startLocationX-20, startLocationY+5);
             label.Name = "nbrEssai";
@@ -310,10 +321,10 @@ namespace MasterMind_Graphique
             label.Size = new Size(20, 20);
             pnlEssai.Controls.Add(label);
         
-            for (int i = 0; i < NBR_TAILLE; i++)
+            for (int i = 0; i < nbrTaille; i++)
             { 
                 Button newBtnEssai = new Button();
-                newBtnEssai.Size = new Size(pnlEssai.Width/(NBR_TAILLE*2), btnHeight);
+                newBtnEssai.Size = new Size(pnlEssai.Width/(nbrTaille*2), btnHeight);
                 newBtnEssai.Location = new Point(startLocationX + (newBtnEssai.Width * i), startLocationY);
                 newBtnEssai.Name = "btn" + i + 1;       
                 pnlEssai.Controls.Add(newBtnEssai);
@@ -321,7 +332,7 @@ namespace MasterMind_Graphique
                 buttonsTableau[cmptr - 1, i] = newBtnEssai;
             }
   
-            for (int i = 0; i < NBR_TAILLE; i++)
+            for (int i = 0; i < nbrTaille; i++)
             {  
                 Button newBtnResultat = new Button();              
                 newBtnResultat.Location = new Point(10 +(i*20), startLocationY);
@@ -335,36 +346,36 @@ namespace MasterMind_Graphique
             cmptr++;
         }
 
+        /// <summary>
+        /// Affiche les couleurs déterminées par l'ordinateur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMontrer_Click(object sender, EventArgs e)
         {
             pnlOrdinateur.Visible = true;
         }
 
-        private void checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// Détermine la longueur des couleurs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn2_Click(object sender, EventArgs e)
         {
-            taille = Convert.ToInt16(btn2.Text);
+            nbrTaille = Convert.ToInt16(btn2.Text);
         }
+
 
         private void btn4_Click(object sender, EventArgs e)
         {
-            taille = Convert.ToInt16(btn4.Text);
+            nbrTaille = Convert.ToInt16(btn4.Text);
         }
 
         private void btn6_Click(object sender, EventArgs e)
         {
-            taille = Convert.ToInt16(btn6.Text);
+            nbrTaille = Convert.ToInt16(btn6.Text);
         }
 
-        int DeciderTaille(object sender, EventArgs e) {
-            int taille;
-            Button btnTaille = (Button)sender;
-            taille = Convert.ToInt32(btnTaille.Text);
-            return taille;
-        }
     }
 }

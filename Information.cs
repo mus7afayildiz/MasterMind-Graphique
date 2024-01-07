@@ -23,7 +23,7 @@ namespace MasterMind_Graphique
             textBox.Text = "MasterMind - Règles du jeu.\r\n\r\n-L'ordinateur choisit une séquence de couleurs. " +
                 "Le nombre de couleurs correspond à la longueur du code. La longueur du code par défaut est de 4." +
                 "\r\n\r\n-L'objectif du jeu est de deviner les positions exactes des couleurs dans la séquence de l'ordinateur." +
-                "\r\n\r\n-Après avoir rempli une ligne avec vos suppositions et cliqué sur le bouton \"Enter\", " +
+                "\r\n\r\n-Après avoir rempli une ligne avec vos suppositions et cliqué sur le bouton \"Comparer\", " +
                 "l'ordinateur répond avec le résultat de votre supposition." +
                 "\r\n\r\n-Chaque couleur que vous estimez est correcte si elle correspond à la couleur " +
                 "et à la position correctes dans la séquence de codes." +
@@ -33,9 +33,9 @@ namespace MasterMind_Graphique
                 "\r\n\r\n-Vous gagnez le jeu lorsque vous parvenez à deviner toutes les couleurs de la séquence de code " +
                 "et qu'elles sont toutes à la bonne position." +
                 "\r\n\r\n-Vous perdez le jeu si vous utilisez toutes les tentatives sans deviner la séquence de code de l'ordinateur." +
-                "\r\n\r\nComment jouer à ce jeu: Après avoir rempli la ligne en choisissant 4 couleurs sur 7, " +
-                "\r\n\r\n vous pouvez modifier votre sélection avant de demander à l'ordinateur de répondre à votre supposition. " +
-                "\r\n\r\n Une fois que vous êtes satisfait de votre réponse, cliquez sur le bouton « Entrée » et obtenez la réponse de l'ordinateur." +
+                "\r\n\r\nComment jouer à ce jeu: Après avoir rempli la ligne en choisissant 2-4-6 couleurs sur 7, " +
+                "\r\n\r\n vous pouvez décider votre sélection avant de demander à l'ordinateur de répondre à votre supposition. " +
+                "\r\n\r\n Une fois que vous êtes satisfait de votre réponse, cliquez sur le bouton « Comparer » et obtenez la réponse de l'ordinateur." +
                 "\r\n\r\nBonne chance !";
             textBox.Font = new Font("Georgia", 7);
             textBox.Location = new Point(80, 150);

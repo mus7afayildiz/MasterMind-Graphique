@@ -37,9 +37,14 @@
             this.btnMagenta = new System.Windows.Forms.Button();
             this.btnCyan = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBox = new System.Windows.Forms.CheckBox();
+            this.btn6 = new System.Windows.Forms.Button();
+            this.btn4 = new System.Windows.Forms.Button();
+            this.btn2 = new System.Windows.Forms.Button();
             this.btnMontrer = new System.Windows.Forms.Button();
             this.pnlResult = new System.Windows.Forms.Panel();
             this.pnlEssai = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnCompare = new System.Windows.Forms.Button();
             this.genererCouleur = new System.Windows.Forms.Button();
@@ -49,11 +54,6 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.lblBienPlaces = new System.Windows.Forms.Label();
             this.lblMalPlaces = new System.Windows.Forms.Label();
-            this.btn2 = new System.Windows.Forms.Button();
-            this.btn4 = new System.Windows.Forms.Button();
-            this.btn6 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.checkBox = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.pnlEssai.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -155,6 +155,49 @@
             this.panel1.Size = new System.Drawing.Size(724, 526);
             this.panel1.TabIndex = 15;
             // 
+            // checkBox
+            // 
+            this.checkBox.AutoSize = true;
+            this.checkBox.Location = new System.Drawing.Point(36, 106);
+            this.checkBox.Name = "checkBox";
+            this.checkBox.Size = new System.Drawing.Size(58, 17);
+            this.checkBox.TabIndex = 30;
+            this.checkBox.Text = "unique";
+            this.checkBox.UseVisualStyleBackColor = true;
+            // 
+            // btn6
+            // 
+            this.btn6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btn6.Location = new System.Drawing.Point(79, 73);
+            this.btn6.Name = "btn6";
+            this.btn6.Size = new System.Drawing.Size(20, 20);
+            this.btn6.TabIndex = 29;
+            this.btn6.Text = "6";
+            this.btn6.UseVisualStyleBackColor = false;
+            this.btn6.Click += new System.EventHandler(this.btn6_Click);
+            // 
+            // btn4
+            // 
+            this.btn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btn4.Location = new System.Drawing.Point(55, 73);
+            this.btn4.Name = "btn4";
+            this.btn4.Size = new System.Drawing.Size(20, 20);
+            this.btn4.TabIndex = 28;
+            this.btn4.Text = "4";
+            this.btn4.UseVisualStyleBackColor = false;
+            this.btn4.Click += new System.EventHandler(this.btn4_Click);
+            // 
+            // btn2
+            // 
+            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.btn2.Location = new System.Drawing.Point(32, 73);
+            this.btn2.Name = "btn2";
+            this.btn2.Size = new System.Drawing.Size(20, 20);
+            this.btn2.TabIndex = 27;
+            this.btn2.Text = "2";
+            this.btn2.UseVisualStyleBackColor = false;
+            this.btn2.Click += new System.EventHandler(this.btn2_Click);
+            // 
             // btnMontrer
             // 
             this.btnMontrer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -180,6 +223,15 @@
             this.pnlEssai.Name = "pnlEssai";
             this.pnlEssai.Size = new System.Drawing.Size(402, 492);
             this.pnlEssai.TabIndex = 24;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(-32, 59);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(20, 30);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "unique";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // panel4
             // 
@@ -268,59 +320,6 @@
             this.lblMalPlaces.Size = new System.Drawing.Size(59, 13);
             this.lblMalPlaces.TabIndex = 21;
             this.lblMalPlaces.Text = "Mal Places";
-            // 
-            // btn2
-            // 
-            this.btn2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn2.Location = new System.Drawing.Point(32, 73);
-            this.btn2.Name = "btn2";
-            this.btn2.Size = new System.Drawing.Size(20, 20);
-            this.btn2.TabIndex = 27;
-            this.btn2.Text = "2";
-            this.btn2.UseVisualStyleBackColor = false;
-            this.btn2.Click += new System.EventHandler(this.btn2_Click);
-            // 
-            // btn4
-            // 
-            this.btn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn4.Location = new System.Drawing.Point(55, 73);
-            this.btn4.Name = "btn4";
-            this.btn4.Size = new System.Drawing.Size(20, 20);
-            this.btn4.TabIndex = 28;
-            this.btn4.Text = "4";
-            this.btn4.UseVisualStyleBackColor = false;
-            this.btn4.Click += new System.EventHandler(this.btn4_Click);
-            // 
-            // btn6
-            // 
-            this.btn6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.btn6.Location = new System.Drawing.Point(79, 73);
-            this.btn6.Name = "btn6";
-            this.btn6.Size = new System.Drawing.Size(20, 20);
-            this.btn6.TabIndex = 29;
-            this.btn6.Text = "6";
-            this.btn6.UseVisualStyleBackColor = false;
-            this.btn6.Click += new System.EventHandler(this.btn6_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(-32, 59);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(20, 30);
-            this.button1.TabIndex = 30;
-            this.button1.Text = "unique";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // checkBox
-            // 
-            this.checkBox.AutoSize = true;
-            this.checkBox.Location = new System.Drawing.Point(36, 106);
-            this.checkBox.Name = "checkBox";
-            this.checkBox.Size = new System.Drawing.Size(58, 17);
-            this.checkBox.TabIndex = 30;
-            this.checkBox.Text = "unique";
-            this.checkBox.UseVisualStyleBackColor = true;
-            this.checkBox.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
             // Main
             // 
