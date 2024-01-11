@@ -1,4 +1,9 @@
-﻿using System;
+﻿/// ETML
+/// Auteur : Mustafa Yildiz
+/// Date   : jeudi, 23 novembre 2023
+/// Description : Dans ce panneau, vous pouvez trouver des codes qui fournissent des informations sur le jeu. 
+
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,8 +50,6 @@ namespace MasterMind_Graphique
         }
         private void Information_Load(object sender, EventArgs e)
         {
-           
-
         }
 
         private void btnMenu_Click(object sender, EventArgs e)

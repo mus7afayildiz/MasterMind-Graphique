@@ -37,9 +37,9 @@
             // 
             // btnDemarrager
             // 
-            this.btnDemarrager.Location = new System.Drawing.Point(535, 51);
+            this.btnDemarrager.Location = new System.Drawing.Point(497, 51);
             this.btnDemarrager.Name = "btnDemarrager";
-            this.btnDemarrager.Size = new System.Drawing.Size(233, 23);
+            this.btnDemarrager.Size = new System.Drawing.Size(240, 25);
             this.btnDemarrager.TabIndex = 0;
             this.btnDemarrager.Text = "Demarrer le jeux";
             this.btnDemarrager.UseVisualStyleBackColor = true;
@@ -47,9 +47,9 @@
             // 
             // btnInfo
             // 
-            this.btnInfo.Location = new System.Drawing.Point(217, 51);
+            this.btnInfo.Location = new System.Drawing.Point(238, 51);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(235, 23);
+            this.btnInfo.Size = new System.Drawing.Size(240, 25);
             this.btnInfo.TabIndex = 1;
             this.btnInfo.Text = "Information";
             this.btnInfo.UseVisualStyleBackColor = true;
@@ -59,7 +59,7 @@
             // 
             this.lblBienvenue.AutoSize = true;
             this.lblBienvenue.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F);
-            this.lblBienvenue.Location = new System.Drawing.Point(311, 9);
+            this.lblBienvenue.Location = new System.Drawing.Point(287, 9);
             this.lblBienvenue.Name = "lblBienvenue";
             this.lblBienvenue.Size = new System.Drawing.Size(393, 39);
             this.lblBienvenue.TabIndex = 2;

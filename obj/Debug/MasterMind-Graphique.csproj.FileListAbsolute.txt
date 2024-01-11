@@ -32,3 +32,5 @@ F:\Leçons\Module2\Jeudi Matin P_Prog 403-404 Curchod A\MasterMind-Graphique\obj
 F:\Leçons\Module2\Jeudi Matin P_Prog 403-404 Curchod A\MasterMind-Graphique\obj\Debug\MasterMind-Graphique.pdb
 F:\Leçons\Module2\Jeudi Matin P_Prog 403-404 Curchod A\MasterMind-Graphique\obj\Debug\MasterMind_Graphique.FrmIntro.resources
 F:\Leçons\Module2\Jeudi Matin P_Prog 403-404 Curchod A\MasterMind-Graphique\obj\Debug\MasterMind_Graphique.Information.resources
+D:\Leçons\Module2\Jeudi Matin P_Prog 403-404 Curchod A\MasterMind-Graphique\obj\Debug\MasterMind_Graphique.FrmIntro.resources
+D:\Leçons\Module2\Jeudi Matin P_Prog 403-404 Curchod A\MasterMind-Graphique\obj\Debug\MasterMind_Graphique.Information.resources

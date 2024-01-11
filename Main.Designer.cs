@@ -54,6 +54,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.lblBienPlaces = new System.Windows.Forms.Label();
             this.lblMalPlaces = new System.Windows.Forms.Label();
+            this.lblInformation = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlEssai.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -218,6 +219,7 @@
             // 
             // pnlEssai
             // 
+            this.pnlEssai.Controls.Add(this.lblInformation);
             this.pnlEssai.Controls.Add(this.button1);
             this.pnlEssai.Location = new System.Drawing.Point(123, 15);
             this.pnlEssai.Name = "pnlEssai";
@@ -295,7 +297,7 @@
             // btnReset
             // 
             this.btnReset.BackColor = System.Drawing.Color.IndianRed;
-            this.btnReset.Location = new System.Drawing.Point(96, 12);
+            this.btnReset.Location = new System.Drawing.Point(94, 12);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(99, 38);
             this.btnReset.TabIndex = 19;
@@ -321,6 +323,17 @@
             this.lblMalPlaces.TabIndex = 21;
             this.lblMalPlaces.Text = "Mal Places";
             // 
+            // lblInformation
+            // 
+            this.lblInformation.AutoSize = true;
+            this.lblInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInformation.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            this.lblInformation.Location = new System.Drawing.Point(13, 202);
+            this.lblInformation.Name = "lblInformation";
+            this.lblInformation.Size = new System.Drawing.Size(373, 25);
+            this.lblInformation.TabIndex = 0;
+            this.lblInformation.Text = "Il faut choisir le taille pour commencer";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -341,6 +354,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.pnlEssai.ResumeLayout(false);
+            this.pnlEssai.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -374,6 +388,7 @@
         private System.Windows.Forms.Button btn4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox checkBox;
+        private System.Windows.Forms.Label lblInformation;
     }
 }
 
